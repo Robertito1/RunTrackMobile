@@ -10,6 +10,7 @@ import week11.st269142.RunTrack.ui.screen.ForgotPasswordScreen
 import week11.st269142.RunTrack.ui.screen.HomeScreen
 import week11.st269142.RunTrack.ui.screen.LoginScreen
 import week11.st269142.RunTrack.ui.screen.RegisterScreen
+import week11.st269142.RunTrack.ui.screen.RunHistoryScreen
 
 @Composable
 fun NavGraph(
@@ -72,12 +73,20 @@ fun NavGraph(
         composable(route = Screen.Home.route) {
             HomeScreen(
                 onNavigateToFeature = {
-                    navController.navigate(Screen.Feature.route)
+                    navController.navigate(Screen.RunHistory.route)
                 },
                 onSignOut = {
                     navController.navigate(Screen.Login.route) {
                         popUpTo(0) { inclusive = true }
                     }
+                }
+            )
+        }
+
+        composable(route = Screen.RunHistory.route) {
+            RunHistoryScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
                 }
             )
         }
